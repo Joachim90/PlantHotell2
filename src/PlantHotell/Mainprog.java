@@ -1,6 +1,8 @@
-package Sprint1.PlantHotell_Inlamningsuppgift1.PlantHotell;
+package PlantHotell;
 
 import javax.swing.*;
+
+import static java.util.Arrays.binarySearch;
 
 
 public class Mainprog {
@@ -11,7 +13,6 @@ public class Mainprog {
         VätskeBehov meatloaf = new KöttätandeVäxt("Meatloaf", 0.7, VäxtTyp.KÖTTÄTANDEVÄXT);        //<--Polymorphism
         VätskeBehov olof = new Palm("Olof", 1, VäxtTyp.PALM);                                      //<--Polymorphism
         VätskeBehov igge = new Kaktus("Igge", VäxtTyp.KAKTUS);                                           //<--Polymorphism
-
 
         // Lägger samtliga objekt i en lista
         VätskeBehov[] växter = {laura, meatloaf, olof, igge};                                                  //<--Polymorphism
@@ -26,24 +27,22 @@ public class Mainprog {
             }
 
             input = input.toLowerCase().trim();
+            boolean växtHittad = false;
 
             // Se ifall användar-input är samma som något av objektens namn, isåfall, skriv ut objektet med hjälp av toString-metoden.
-            if (input.equals(växter[0].getNamn().toLowerCase())) {
-                JOptionPane.showMessageDialog(null, växter[0]);
-            } else if (input.equals(växter[1].getNamn().toLowerCase())) {
-                JOptionPane.showMessageDialog(null, växter[1]);
-            } else if (input.equals(växter[2].getNamn().toLowerCase())) {
-                JOptionPane.showMessageDialog(null, växter[2]);
-            } else if (input.equals(växter[3].getNamn().toLowerCase())) {
-                JOptionPane.showMessageDialog(null, växter[3]);
+            for (int i = 0 ; i < växter.length ; i++) {
+                if (input.equals(växter[i].getNamn().toLowerCase())) {
+                    JOptionPane.showMessageDialog(null, växter[i]);
+                    växtHittad = true;
+                }
 
-            // Om input är "alla" skrivs hela listan ut med en for-loop.
-            }else if (input.equals("alla")) {
+                // Om input är "alla" skrivs hela listan ut med en for-loop.
+            }if (input.equals("alla")) {
                 for(int i = 0 ; i < växter.length ; i++) {
                     JOptionPane.showMessageDialog(null, växter[i]);
                 }
             }
-            else {
+            else if (!växtHittad){
                 JOptionPane.showMessageDialog(null, "En växt med det namnet bor ej på Greenest växthotell.");
             }
         }

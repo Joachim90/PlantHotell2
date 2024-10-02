@@ -1,4 +1,4 @@
-package Sprint1.PlantHotell_Inlamningsuppgift1.PlantHotell;
+package PlantHotell;
 
 //Ärver från växt och implementerar interfacet vätskebehov
 public class KöttätandeVäxt extends Växt implements VätskeBehov {
